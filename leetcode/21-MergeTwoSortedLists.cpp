@@ -23,50 +23,81 @@ int meioLista(ListNode* lista){
 
 }
 
+// ListNode* mergeSort(std::vector<int> arr, int p, int r){
+
+
+
+
+
+// }
+
 
 
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        std::vector<int> arr;
-        std::vector<int> sorted;
+        ListNode* arr;
         ListNode* current1 = list1;
         ListNode* current2 = list2;
+        
+
+        
 
         while(current1 != nullptr){
-            arr.push_back(current1->val);
+            arr = new ListNode(current1->val);
             current1 = current1->next;
         }
 
         while(current2 != nullptr){
-            arr.push_back(current2->val);
+            arr = new ListNode(current1->val);
             current2 = current2->next;
         }
 
-        for (int i = 0; i < arr.size();i++){
-            std::cout << arr[i] << " ";
+        ListNode* current3 = arr;
+        
+        while (current3 != nullptr){
+            std::cout << current3->val;
         }
-
-        std::cout << "\n";
-
-        int guarda = arr[0];
+  
+        
 
 
-        for (int i = 1; i < arr.size();i++){
-            for (int j = 0; j < arr.size();j++){
-                if (guarda < arr[j]){
-                    guarda = arr[j];
-                    // sorted.push_back(arr[i]);
-                    // break;
-                }
+
+        // for (int i = 0; i < arr.size();i++){
+        //     std::cout << arr[i] << " ";
+        // }
+
+
+        // ListNode* mergeSort(arr, );
+
+
+
+
+
+
+
+
+
+        // std::cout << "\n";
+
+        // int guarda = arr[0];
+
+
+        // for (int i = 1; i < arr.size();i++){
+        //     for (int j = 0; j < arr.size();j++){
+        //         if (guarda < arr[j]){
+        //             guarda = arr[j];
+        //             // sorted.push_back(arr[i]);
+        //             // break;
+        //         }
                 
-            }
-            sorted.push_back(guarda);
-        }
+        //     }
+        //     sorted.push_back(guarda);
+        // }
 
-        for (int i = 0; i < sorted.size();i++){
-            std::cout << sorted[i] << " ";
-        }
+        // for (int i = 0; i < sorted.size();i++){
+        //     std::cout << sorted[i] << " ";
+        // }
 
 
         
