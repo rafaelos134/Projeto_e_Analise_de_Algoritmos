@@ -28,12 +28,12 @@ class Solution {
         ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 
             ListNode* dummyHead = new ListNode();
-            ListNode* current = dummyHead;
-            int carry = 0;
+            ListNode* atual = dummyHead;
+            int maisUm = 0;
 
 
 
-            while(l1 != nullptr || l2 != nullptr || carry !=0){
+            while(l1 != nullptr || l2 != nullptr || maisUm !=0){
                 int x = 0;
                 int y = 0;
 
@@ -46,12 +46,12 @@ class Solution {
                 }
 
 
-                int sum = x + y + carry;
-                carry = sum/10;
+                int soma = x + y + maisUm;
+                maisUm = soma/10;
 
 
-                current->next = new ListNode(sum%10);
-                current = current->next;
+                atual->next = new ListNode(soma%10);
+                atual = atual->next;
 
                 if (l1 != nullptr){
                     l1 = l1->next;
