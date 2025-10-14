@@ -39,9 +39,35 @@ int main() {
         }
     }
 
+    for (int i = 0; i < nJogos; i++){
+        int flux;
+        int nodeU;
+        std::string operador;
+        int nodeV;
 
-
+        std::cin >> nodeU;
+        std::cin >> operador;
+        std::cin >> nodeV;
     
+        if (operador == "<"){
+            // Caso ganhe o fluxo e definido para 2
+            flux = 2;
+        }else{
+            // Caso empate o fluxo e definido para 1
+            flux = 1;
+        }
+
+
+        for (auto &aresta : G[nodeU]) {
+            if (std::get<0>(aresta) == nodeV) {
+                std::get<1>(aresta) += flux;     
+                break;
+            }
+    }
+
+    }
+
+
 
 
 
