@@ -2,7 +2,7 @@ import copy
 
 
 # Erro tem haver com o flux max
-def maxValor(G,node):
+def maxValor(G,node,flux,limite):
     pontos = 0
 
 
@@ -10,7 +10,7 @@ def maxValor(G,node):
     for adversario in G[node].keys():    
         if G[node][adversario][0] == 0:
             G[node][adversario][0] = 2 # fluxo
-            G[node][adversario][2] = 4 # pontucao
+            G[node][adversario][2] = 4 # pontucao 4
             G[adversario][node][0] = 2 # fluxo inv
 
         elif G[node][adversario][0] == 1:
@@ -61,11 +61,11 @@ def main():
 
         nTimes = int(temp[0])
         nCorrespondente = int(temp[1])
-        nJogos = int(temp[2])
+        nJogosConcluidos = int(temp[2])
 
 
 
-        if (nTimes == nCorrespondente == nJogos == 0):
+        if (nTimes == nCorrespondente == nJogosConcluidos == 0):
             break
 
         G = {i:{} for i in range(nTimes)}
@@ -76,7 +76,7 @@ def main():
                     G[i][j] = [0,nCorrespondente,0]
 
 
-        for i in range(nJogos):
+        for i in range(nJogosConcluidos):
 
             temp = input()
             temp = temp.split(" ")
@@ -102,22 +102,27 @@ def main():
                 G[nodeU][nodeV][2] += pontuacao
                 G[nodeV][nodeU][2] += pontuacao
 
-        G, pontosZero = maxValor(G,0)
+        flux = 0
+        limite = nCorrespondente
+
+
+
+        G, pontosZero = maxValor(G,0,flux,limite)
 
         
 
         if cont == 3:
             print(G)
-        #     print(pontosZero)
+            print(pontosZero)
 
 
         for x in range(1,nTimes):
             T = copy.deepcopy(G)
-            T, pontosAtual = maxValor(T,x)
+            T, pontosAtual = maxValor(T,x,flux,limite)
 
-            # if cont == 9:
-            #     print(f"print do no {x}: {T}")
-            #     print(pontosAtual)
+            if cont == 3:
+                print(f"print do no {x}: {T}")
+                print(pontosAtual)
 
             if pontosZero < pontosAtual:
                 prov = "N"
