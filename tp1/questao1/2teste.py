@@ -111,7 +111,7 @@ def main():
 
         
 
-        if cont == 3:
+        if cont == False:
             print(G)
             print(pontosZero)
 
@@ -120,15 +120,15 @@ def main():
             T = copy.deepcopy(G)
             T, pontosAtual = maxValor(T,x,flux,limite)
 
-            if cont == 3:
+            if cont == False:
                 print(f"print do no {x}: {T}")
                 print(pontosAtual)
 
             if pontosZero < pontosAtual:
-                prov = "N"
+                prov = "Y"
                 break
             else:
-                prov = "Y"
+                prov = "N"
 
             
 
