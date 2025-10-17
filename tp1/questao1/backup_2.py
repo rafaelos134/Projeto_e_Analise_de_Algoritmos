@@ -1,5 +1,3 @@
-import time
-
 def DFS(G, inicio,fim):
     visitado = set()
     pilha = [(inicio, [inicio])] 
@@ -43,19 +41,22 @@ def FordFulkerson(G, s, t):
         if not caminho_existe:
             break
 
-        for k in range(len(caminho) - 1):
-            u, v = caminho[k], caminho[k+1]
-            G[u][v][0] += fluxo_minimo
+        if caminho_existe:
+            for k in range(len(caminho) - 1):
+                u = caminho[k]
+                v = caminho[k+1]
 
-            if v not in G:
-                G[v] = {}
-            if u not in G[v]:
-                G[v][u] = [0, 0]
+                G[u][v][0] += fluxo_minimo
 
-            G[v][u][0] -= fluxo_minimo
+                if v not in G:
+                    G[v] = {}
+                if u not in G[v]:
+                    G[v][u] = [0, 0]
+
+                G[v][u][0] -= fluxo_minimo
 
     fluxo_total = sum(G[s][v][0] for v in G[s])
-
+    
     return fluxo_total
 
 def add_aresta(G,u,v,fluxo,capacidade):
@@ -195,7 +196,6 @@ def main():
         
         fluxo_total = FordFulkerson(T,fonte,sumidouro)
 
-
         soma_jogos_restantes = sum(T[fonte][jogo][1] for jogo in T[fonte])
 
         if fluxo_total >= soma_jogos_restantes:
@@ -206,7 +206,4 @@ def main():
 
 
 if __name__=="__main__":
-    inicio = time.time()
     main()
-    fim = time.time()
-    print(f"Tempo de execução: {fim - inicio:.4f} segundos")
